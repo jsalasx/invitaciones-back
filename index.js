@@ -10,12 +10,18 @@ const corsOptions = {
   methods: ['GET', 'POST', 'PUT', 'DELETE'], // Métodos permitidos
   allowedHeaders: ['Content-Type', 'Authorization'], // Encabezados permitidos
 };
+
+if (process.env.NODE_ENV === 'production') {
+  console.log('Estamos en modo producción');
+} else {
+  console.log('Estamos en modo desarrollo');
+}
 // Middleware
 app.use(bodyParser.json());
 
 app.use(cors(corsOptions));
 // Conexión a MongoDB
-mongoose.connect('mongodb://mongo:RKoFzKttkpHHixPtYGBPfgyOHdZZnAte@roundhouse.proxy.rlwy.net:55469', {
+mongoose.connect('mongodb://mongo:LeGfSDHrsFtQqMLwuDEzJlTXiBHUKyJT@mongodb.railway.internal:27017', {
 });
 
 const db = mongoose.connection;
@@ -68,5 +74,5 @@ app.get('/api/invitados', async (req, res) => {
 
 // Iniciar el servidor
 app.listen(PORT, () => {
-  console.log(`Servidor corriendo en http://localhost:${PORT}`);
+  console.log(`App running on port ${PORT} in ${process.env.NODE_ENV} mode.`);
 });
