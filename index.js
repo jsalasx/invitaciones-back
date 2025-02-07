@@ -21,7 +21,7 @@ app.use(bodyParser.json());
 
 app.use(cors(corsOptions));
 // Conexión a MongoDB
-mongoose.connect('mongodb://mongo:LeGfSDHrsFtQqMLwuDEzJlTXiBHUKyJT@mongodb.railway.internal:27017', {
+mongoose.connect('mongodb://mongo:LeGfSDHrsFtQqMLwuDEzJlTXiBHUKyJT@viaduct.proxy.rlwy.net:16605', {
 });
 
 const db = mongoose.connection;
